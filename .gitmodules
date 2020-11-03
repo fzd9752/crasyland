@@ -1,3 +1,7 @@
 [submodule "themes/hugo-developer-portfolio"]
 	path = themes/hugo-developer-portfolio
 	url = https://github.com/samrobbins85/hugo-developer-portfolio
+[submodule "public"]
+	path = public
+	url = https://github.com/fzd9752/fzd9752.github.io.git
+	branch = master

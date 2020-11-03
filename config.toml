@@ -1,5 +1,5 @@
 # Base information
-baseURL = "https://fzd9752.github.io"
+baseURL = "https://fzd9752.github.io/"
 languageCode = "en-gb"
 title = "Elsa Wang"
 # theme = "hugo-developer-portfolio"
