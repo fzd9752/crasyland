@@ -1,0 +1,19 @@
+sudo: false
+language: go
+git: 
+  depth: 1
+install: go get -v github.com/gohugoio/hugo
+script:
+  - hugo
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: e6d60f4286d1a5127979af07e5ddfffac4ee523f  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
+  local_dir: public
+  repo: fzd9752/fzd9752@github.io
+  target_branch: master
+  email: fzd9752@msn.com
+  name: fzd9752
