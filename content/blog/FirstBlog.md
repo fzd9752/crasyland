@@ -10,4 +10,4 @@ draft: false
 
 ## Hosting on GitHub Pages
 
-## Using Travis CI
+## CI with Github Actions
