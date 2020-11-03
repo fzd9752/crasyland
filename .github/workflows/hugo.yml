@@ -3,10 +3,13 @@ on:
   push:
     branches:
       - main  # Set a branch name to trigger deployment
+  watch:
+    types: started
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - uses: actions/checkout@v2
         with:
