@@ -1,0 +1,11 @@
+filter:
+  - label: Computer Vision
+    value: cv
+  - label: Deep Learning
+    value: dl
+  - label: Machine Learning
+    value: ml
+  - label: Medicine
+    value: medicine
+  - label: Robot
+    value: robot

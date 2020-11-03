@@ -1,0 +1,128 @@
+---
+banner:
+  title: Hi! Here's
+  name: Elsa
+  keyword: AI
+  description: Developer & Researcher.
+social:
+  twitter: ""
+  linkedin: elsa-yishu-wang
+  github: fzd9752
+  gitlab: ""
+  facebook: ""
+  instagram: ""
+  gmail: elsa.w1990
+about:
+  enable: true
+  content: Keep Curious. I write blogs and personal projects here to record my growth. -- Since 2020.11.01.
+update:
+  enable: true
+  nblog: 3
+  nportfolio: 2
+achievements:
+  enable: false
+  item:
+    - title: Auth0 Hackathon
+      award: 3rd Place Security
+      date: July 2020
+      image: https://res.cloudinary.com/samrobbins/image/upload/q_auto/v1591793268/logos/logos_auth0_ruvdmp.svg
+      background: bg-orange-10
+skill:
+  enable: true
+  item:
+    - title: Python
+      logo: /logos/python.svg
+      description: Details coming soon, contact me if you want to know more
+    - title: PyTorch
+      logo: /logos/pytorch.svg
+      description: Details coming soon, contact me if you want to know more
+    - title: TensorFlow
+      logo: /logos/tensorflow.svg
+      description: Details coming soon, contact me if you want to know more
+    - title: PaddlePaddle
+      logo: /logos/pp.svg
+      description: Details coming soon, contact me if you want to know more
+    - title: OpenCV
+      logo: /logos/opencv.svg
+      description: Details coming soon, contact me if you want to know more
+    - title: Git
+      logo: /logos/git.svg
+      description: Details coming soon, contact me if you want to know more
+    - title: Linux
+      logo: /logos/linux.svg
+      description: Details coming soon, contact me if you want to know more
+    - title: C++
+      logo: /logos/cpp.svg
+      description: Details coming soon, contact me if you want to know more
+  moreText: Details in Projects
+  logo: /logos/more.png
+  url: /portfolio
+experience:
+  enable: true
+  item:
+    - logo: /logos/ouster.png
+      title: FAE
+      company: Ouster
+      duration: Nov 2019 - May 2020
+    - logo: /logos/honeywell.jpg
+      title: Advanced AI Perception Engineer
+      company: Honeywell, Advanced Technology Department
+      duration: Aug 2019 - Nov 2019
+    - logo: /logos/byton.png
+      title: Algorithm Engineer
+      company: Byton, L4 Autonomous Driving Department
+      duration: Nov 2018 - Jul 2019
+    - logo: /logos/deepblue.png
+      title: Algorithm Engineer
+      company: DeepBlue AI, Autonomous Driving Group
+      duration: Oct 2017 - Nov 2018
+    - logo: /logos/greenvalley.png
+      title: Data Analyst/Research Assistant
+      company: GreenValley Research Institution
+      duration: Mar 2017 - Sep 2017
+
+certifications:
+  enable: true
+  item:
+    - title:  Flying Car Nanodegree
+      org: Udacity
+      date: Oct 2020
+      image: /logos/udacity.png
+      url: https://confirm.udacity.com/4AXYCST9
+      description: Details coming soon, contact me if you want to know more
+    - title: AI for Medicine Specialisation
+      org: Coursera - Deep Learning AI
+      date: Sep 2020
+      image: /logos/deeplearningai.png
+      url: https://coursera.org/share/6d889ef62bfc37c33ce1d1ea071203a9
+      description: Details coming soon, contact me if you want to know more
+    - title: AI for Trading Nanodegree
+      org: Udacity
+      date: May 2020
+      image: /logos/udacity.png
+      url: https://confirm.udacity.com/NHEAQDV5
+      description: Details coming soon, contact me if you want to know more
+    - title: Self Driving Car Nanodegree
+      org: Udacity
+      date: Sep 2019
+      image: /logos/udacity.png
+      url: https://confirm.udacity.com/AF2KG2FJ
+      description: Details coming soon, contact me if you want to know more 
+    - title: Deep Learning Specialisation
+      org: Coursera - Deep Learning AI
+      date: July 2018
+      image: /logos/deeplearningai.png
+      url: https://coursera.org/share/ad85cedca92a96d34c86d56ad22b7025
+      description: Details coming soon, contact me if you want to know more
+education:
+  enable: true
+  item:
+    - title: MSc Work and Orgnisational Psychology
+      year: 2014 - 2015
+      academy: The University of Nottingham
+      image: /logos/nottingham.png
+    - title: MD Clinical Science
+      year: 2009 - 2014
+      academy: Liaoning University of Traditional Chinese Medicine
+      image: /logos/tcm.jpeg
+

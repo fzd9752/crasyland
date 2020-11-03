@@ -1,0 +1,77 @@
+# Base information
+baseURL = "https://fzd9752.github.io"
+languageCode = "en-gb"
+title = "Elsa Wang"
+# theme = "hugo-developer-portfolio"
+googleAnalytics = ""
+
+# Remove this when using normally
+# themesDir = "../../" 
+# `
+
+# Plugins
+[params.plugins]
+
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"
+  [[params.plugins.js]]
+  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"
+
+
+# navigation
+[menu]
+
+  [[menu.main]]
+  name = "About"
+  URL = "about"
+  weight=3
+
+  [[menu.main]]
+  name = "Blog"
+  URL = "blog"
+  weight=1
+
+  [[menu.main]]
+  name = "Portfolio"
+  URL = "portfolio"
+  weight=2
+
+  # [[menu.main]]
+  # name = "Publication"
+  # URL = "publication"
+  # weight=4
+
+
+[params]
+home = "Home"
+# Meta data
+description = "The website of Elsa Wang"
+author = "Elsa Wang"
+
+
+  [params.contact]
+  enable = false
+  formAction = "" #contact form works with formspree.io
+
+  [params.footer]
+  email = "elsa.w1990@gmail.com"
+  # address = "Benxi, CN"
+  #googlemaps = "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJwbHYJaUqfEgRK0Ui9dVGimc&key=AIzaSyAE_4rVAKux_DSPcb_OdSRDaovtPOSk_3U"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "rainbow_dash"
+    tabWidth = 4
+

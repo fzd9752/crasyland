@@ -1,0 +1,46 @@
+{{ define "main" }}
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
+
+<section class="pt-20">
+    <h1 class="text-center text-5xl font-semibold pb-2">Blog</h1>
+    <h2 class="text-center text-2xl text-gray-700 pb-6">Notes & Journal</h2>
+
+    <hr class="mx-10" />
+</section>
+<section>
+
+    <div x-data="{ tab: 'all' }">
+        <div class="flex justify-center flex-wrap text-gray-500 py-4 px-2" style="--column-gap: 2rem; --row-gap: 2rem">
+            <button :class="{ 'text-teal-700': tab === 'all' }" @click="tab = 'all'" class="font-semibold">
+                All
+            </button>
+            {{ range .Site.Data.blog.filter }}
+            <button :class="{ 'text-teal-700': tab === '{{ .value }}' }" class="font-semibold"
+                @click="tab = '{{ .value }}'">
+                {{ .label }}
+            </button>
+            {{ end }}
+        </div>
+
+
+        <div class="grid container mx-auto pt-4">
+            {{ range .Data.Pages.ByPublishDate.Reverse }}
+            {{ if not .Params.draft }}
+            <div class="p-4" class="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg"
+            x-show="[{{ range .Params.categories }}'{{ . | urlize }}',{{ end }} 'all'].includes(tab)">
+                <div>
+                    <a href="{{ .Permalink | relURL }}">
+                        <h2 class="font-semibold text-xl text-blue-700">
+                            {{ .Title }}
+                        </h2>
+                    </a>
+                    <time class="text-gray-600 text-sm uppercase"
+                        datetime="{{ .Date }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                    <p>{{ .Params.description }}</p>
+                </div>
+            </div>
+            {{ end }}
+            {{ end }}
+        </div>
+</section>
+{{ end }}

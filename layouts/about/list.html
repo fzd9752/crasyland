@@ -1,0 +1,174 @@
+{{ define "main" }}
+{{ "<!-- Hexagon Stylesheet -->" | safeHTML }}
+{{ $hexagons := resources.Get "css/hexagon.css" | minify }}
+<link rel="stylesheet" href="{{ $hexagons.Permalink | relURL }}" />
+<div class="container mx-auto px-4">
+  <section class="pt-20 text-5xl font-semibold pb-4">About</section>
+
+  {{ if .Site.Data.about.cv.enable }}
+  <div>
+    <h3 class="text-center text-xl italic">
+      To see my full CV please go
+      <a class="text-blue-600 hover:underline" href="{{ .Site.Data.about.cv.link }}">here</a>
+    </h3>
+  </div>
+  {{ end }}
+
+  {{ if .Site.Data.about.experience.enable }}
+  <section class="pb-12 ">
+    <h2 class="text-4xl pb-10">Experience</h2>
+    <div class="flex justify-center">
+      <div class="xl:w-1/2 flex flex-col gap-10">
+        {{ range .Site.Data.about.experience.item }}
+        <div class="grid grid-cols-12 mx-4">
+          <div class="col-span-3 flex items-center">
+            <div
+              class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center {{ .background }} border-none">
+              <img class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center" src="{{ .logo }}" />
+            </div>
+          </div>
+          <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
+            <div>
+              <div class="font-medium text-xl">{{ .title }}</div>
+              <div class="text-gray-700 uppercase text-sm tracking-wider font-medium">
+                {{ .company }}
+              </div>
+            </div>
+          </div>
+          <div class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4">
+            {{ .duration }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+<!-- Certifications -->
+{{ if .Site.Data.about.certifications.enable }}
+<section class="py-5 px-4">
+    <h2 class="text-left text-4xl font-semibold pb-4"><span>Certifications</span></h1>
+        <div class="flex justify-center w-full">
+            <div class="xl:w-1/2 flex flex-col gap-10">
+                {{ range .Site.Data.about.certifications.item }}
+                <div class="grid grid-cols-12 mx-4 ">
+                    <div class="col-span-3 flex items-center">
+                        <a href="{{.url}}"
+                            class="rrounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center bg-teal-100 border-none">
+                            <img class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center" src="{{.image}}"
+                                alt="{{.title}}" loading="lazy" style="cursor: pointer">
+                        </a>
+                    </div>
+                    <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
+                        <div>
+                            <div class="font-medium text-black text-xl">{{.title}}</div>
+                            <div class="text-gray-700 text-sm">{{.org}}</div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4">
+                        {{.date}}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        <div class="pt-3 container mx-auto">
+          <p class="text-center italic mx-auto">I'm organising other certifications...</p>
+      </div>
+
+</section>
+{{ end }}
+<!-- /Certifications -->
+
+
+  {{ if .Site.Data.about.hackathons.enable }}
+  <section class="py-20 ">
+    <h2 class="text-4xl">Hackathons</h2>
+    <div class="lg:w-3/4 text-center mx-auto pt-16 px-4">
+      <ul id="hexGrid">
+        {{ range .Site.Data.about.hackathons.item }}
+        <li class="hex">
+          <div class="hexIn">
+            <div class="hexLink">
+              <img src="{{ .image }}" alt="{{ .title }}" loading="lazy" />
+              {{ if eq .url "none" }}
+              <div style="all:unset">
+                <h1>{{ .title }}</h1>
+              </div>
+              {{ else }}
+              <a href="{{ .url }}" style="all:unset" class="text">
+                <h1>{{ .title }}</h1>
+              </a>
+              {{ end }}
+              {{ if eq .url "none" }}
+              <div style="all:unset">
+                <p>{{ .description }}</p>
+              </div>
+              {{ else }}
+              <a href="{{ .url }}" style="all:unset" class="text">
+                <p>{{ .description }}</p>
+              </a>
+              {{ end }}
+            </div>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ if .Site.Data.about.education.enable }}
+  <section class="py-20">
+    <h2 class="text-4xl pb-10">Education</h2>
+    <div class="flex justify-center">
+      <div class="xl:w-1/2 flex flex-col gap-10">
+        {{ range .Site.Data.about.education.item }}
+        <div class="grid grid-cols-12 mx-4">
+          <div class="col-span-3 flex items-center">
+            <div
+              class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center {{ .background }} border-none">
+              <img class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center" src="{{ .image }}" />
+            </div>
+          </div>
+          <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
+            <div>
+              <div class="font-medium text-xl">{{ .title }}</div>
+              <div class="text-gray-700 uppercase text-sm font-medium tracking-wider">
+                {{ .institution }}
+              </div>
+            </div>
+          </div>
+          <div class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4">
+            {{ .duration }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ if .Site.Data.about.skills.enable }}
+  <section class="py-10">
+    <h2 class="text-4xl">Skills</h2>
+    <h3 class="text-gray-700 text-2xl">
+      These are the tools I love to use
+    </h3>
+    <div class="flex flex-wrap justify-center pt-10 px-6 content-center" style="--column-gap: 4rem; --row-gap: 4rem">
+      {{ range .Site.Data.about.skills.item }}
+      <a href="{{ .url }}"><img src="{{ .image }}" alt="{{ .name }}" class="h-20 w-48 object-contain" /></a>
+      {{ end }}
+    </div>
+    <div class="text-gray-800 text-center text-lg pt-6 divide-y-8 divide-transparent">
+      <p>and many more...</p>
+      <p>
+        You can see how I've used these on my
+        <a class="text-blue-600 hover:underline" href="/portfolio">portfolio page</a>
+      </p>
+    </div>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

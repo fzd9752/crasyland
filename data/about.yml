@@ -1,0 +1,66 @@
+cv:
+  enable: false
+  link:
+experience:
+  enable: false
+  item:
+    - logo: https://res.cloudinary.com/samrobbins/image/upload/q_auto/v1597050679/icon_fjhqxr.png
+      title: Student Intern
+      company: Global Cyber Alliance
+      duration: July 2020 - September 2020
+      background: bg-blue-100
+hackathons:
+  enable: false
+  item:
+    - title: Hack Cambridge 2019
+      description: Climate change simulator
+      image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793405/stickers/Hack_Cambridge_101_ozoq5d.png
+      url: none
+education:
+  enable: false
+  item:
+    - title: BSc Computer Science
+      duration: 2018 - Present
+      institution: Durham University
+      image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793268/logos/logos_Durham_fc2sae.svg
+      background: bg-purple-100
+skills:
+  enable: false
+  item:
+    - name: Next.js
+      image: https://cdn.svgporn.com/logos/nextjs.svg
+      url: https://nextjs.org
+    - name: Tailwind CSS
+certifications:
+  enable: true
+  item:
+    - title:  Flying Car Nanodegree
+      org: Udacity
+      date: Oct 2020
+      image: /logos/udacity.png
+      url: https://confirm.udacity.com/4AXYCST9
+      description: Details coming soon, contact me if you want to know more
+    - title: AI for Medicine Specialisation
+      org: Coursera - Deep Learning AI
+      date: Sep 2020
+      image: /logos/deeplearningai.png
+      url: https://coursera.org/share/6d889ef62bfc37c33ce1d1ea071203a9
+      description: Details coming soon, contact me if you want to know more
+    - title: AI for Trading Nanodegree
+      org: Udacity
+      date: May 2020
+      image: /logos/udacity.png
+      url: https://confirm.udacity.com/NHEAQDV5
+      description: Details coming soon, contact me if you want to know more
+    - title: Self Driving Car Nanodegree
+      org: Udacity
+      date: Sep 2019
+      image: /logos/udacity.png
+      url: https://confirm.udacity.com/AF2KG2FJ
+      description: Details coming soon, contact me if you want to know more 
+    - title: Deep Learning Specialisation
+      org: Coursera - Deep Learning AI
+      date: July 2018
+      image: /logos/deeplearningai.png
+      url: https://coursera.org/share/ad85cedca92a96d34c86d56ad22b7025
+      description: Details coming soon, contact me if you want to know more

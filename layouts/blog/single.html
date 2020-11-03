@@ -1,0 +1,128 @@
+{{ define "main" }}
+<section class="pt-20 px-4">
+  <div class="container mx-auto">
+    <h1 class="text-4xl text-center font-semibold">{{.Title}}</h1>
+    <p class="text-center text-gray-600 text-xl">{{.Params.description}}</p>
+    <div class="py-4 text-gray-600">
+    	<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 inline-block stroke-current text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg> {{ .PublishDate.Format "Jan 02, 2006" }}</p>
+    	<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 inline-block stroke-current text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg> {{ math.Round (div (countwords .Content) 220.0) }} minute{{ if gt (math.Round (div (countwords .Content) 220.0)) 1 }}s{{ end }}</p>
+    </div>
+
+    <!-- Start of website/github etc -->
+
+    <div class="flex justify-center gap-x-40 gap-y-4 flex-wrap">
+          {{if isset .Params "coders"}}
+
+      {{if ( gt (len .Params.coders ) 0)}}
+      <div class="border border-gray-500 px-4 py-2 group relative w-48 text-center">
+        <button type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 inline-block stroke-current text-teal-600">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+</svg> Team
+          Project</button>
+        <div class="absolute bg-white border border-gray-400 mt-2 p-4 w-64 hidden group-hover:block mx-auto left-0 right-0" style=" left: 50%; transform: translate(-50%, 0%); ">
+              <ul class="divide-y-4 divide-transparent text-left">
+                {{ range .Params.coders }}
+                <li><a href="https://github.com/{{.}}"> <img src="https://github.com/{{.}}.png" alt="GitHub Avatar"
+                      width="42" height="42" style="border-radius: 50%" class="inline-block"> <span class="text-gray-700">{{.}}</span></a></li>
+                {{end}}
+              </ul>
+
+        </div>
+      </div>
+          {{end}}
+      {{end}}
+    
+
+    {{if isset .Params "site"}}
+    {{if ne .Params.site ""}}
+      <div class="border border-gray-500 px-4 py-2 w-32">
+        <a  href="{{.Params.site}}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 inline-block stroke-current text-gray-600">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+</svg>  Website</a>
+      </div>
+    {{end}}
+    {{end}}
+
+
+      {{if isset .Params "github"}}
+
+      {{if ( gt (len .Params.github ) 1)}}
+      <div class="border border-gray-500 px-4 py-2 group relative w-32 text-center">
+        <button type="button">
+          <img src="https://unpkg.com/simple-icons@v3/icons/github.svg" class="inline-block h-6 w-6 mr-2" /> GitHub</button>
+        <div class="absolute bg-white border border-gray-400 mt-2 p-4 w-64 hidden group-hover:block mx-auto left-0 right-0" style=" left: 50%; transform: translate(-50%, 0%); ">
+              <ul class="divide-y-4 divide-transparent text-left">
+                {{ range .Params.github }}
+                <li><a style="color: #0366d6; font-weight: 600" href="{{.}}"> <span><img class="inline-block" loading="lazy" src="https://res.cloudinary.com/samrobbins/image/upload/v1593092912/repo_ec3slk.svg"></span>  {{index (last 1 (split . "/")) 0}}</a></li>
+                {{end}}
+              </ul>
+
+        </div>
+      </div>
+          {{else if ( gt (len .Params.github ) 0)}}
+                      <div class="border border-gray-500 px-4 py-2 w-32 ">
+
+        <a  href="{{index (.Params.github) 0}}"> 
+         <img src="https://unpkg.com/simple-icons@v3/icons/github.svg" class="inline-block h-6 w-6 mr-2" /> Github</a>
+         </div>
+        {{end}}
+      {{end}}
+     
+    </div>
+    <!-- End of website/github etc -->
+    <div class="flex justify-center">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CEBIVKQN&placement=csnotesme" id="_carbonads_js"></script>
+</div>
+
+    <hr class="my-4">
+    {{if isset .Params "tech"}}
+    {{if (gt (len .Params.tech) 0)}}
+    <h2 class="text-center text-3xl">Built with</h2>
+
+    <section class="py-6 px-2">
+      <div class="container">
+
+        <div class="flex justify-around flex-wrap gap-y-4">
+          {{ range .Params.tech }}
+          <div>
+            <a href="{{.url}}">
+            <img class="h-20 w-32 object-contain" src="{{.logo}}" alt="{{.name}}" loading="lazy" style="cursor: pointer">
+            </a>
+          </div>
+          {{ end }}
+        </div>
+
+      </div>
+
+    </section>
+
+    <hr class="py-4">
+    {{end}}
+    {{end}}
+
+    
+  </div>
+  
+  </div>
+  
+</section>
+<div class="container prose mx-auto w-screen px-4 pb-6">
+      {{.Content }}
+</div>
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+    integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"
+    crossorigin="anonymous"
+  />
+
+
+
+{{end}}

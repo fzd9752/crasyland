@@ -1,0 +1,340 @@
+{{ define "main" }}
+{{ "<!-- Hexagon Stylesheet -->" | safeHTML }}
+{{ $hexagons := resources.Get "css/hexagon.css" | minify }}
+<link rel="stylesheet" href="{{ $hexagons.Permalink | relURL}}">
+
+<!-- Top -->
+<section id="intrologo" class='pt-10 flex justify-center pb-20'>
+    <canvas width="2198" height="1230"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+        function i(){
+            x.clearRect(0,0,w,h)
+            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+            while(q[1].x<w+f) d(q[0], q[1])
+        }
+        function d(i,j){   
+            x.beginPath()
+            x.moveTo(i.x, i.y)
+            x.lineTo(j.x, j.y)
+            var k = j.x + (z()*2-0.25)*f,
+                n = y(j.y)
+            x.lineTo(k, n)
+            x.closePath()
+            r-=u/-50
+            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+            x.fill()
+            q[0] = q[1]
+            q[1] = {x:k,y:n}
+        }
+        function y(p){
+            var t = p + (z()*2-1.1)*f
+            return (t>h||t<0) ? y(p) : t
+        }
+        document.getElementById("intrologo").onclick = i
+        document.getElementById("intrologo").ontouchstart = i
+        i()
+
+      <!-- 多边形trianglify背景 -->
+    </script>  
+    <div class="container mt-6 px-4">
+        <div class="text-5xl lg:text-6xl font-bold leading-none tracking-tight w-1/2">
+            <h1>{{ .Site.Data.homepage.banner.title | safeHTML }}
+                <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-teal-400 to-blue-400">{{ .Site.Data.homepage.banner.name | safeHTML }}</span>
+                <br>
+                an <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-purple-400 to-red-400">{{ .Site.Data.homepage.banner.keyword| safeHTML }}</span>
+                <br>
+                {{ .Site.Data.homepage.banner.description | safeHTML }}
+            </h1>
+        </div>
+    </div>
+</section>
+<!-- /top -->
+
+<!-- About -->
+{{ if .Site.Data.homepage.about.enable }}
+<section class="py-5 container mx-auto">
+    {{ with .Site.Data.homepage.about }}
+    <h2>
+        <p class="text-center text-xl text-gray-800 w-4/5 mx-auto">{{.content | markdownify}}</p>
+        {{end}}
+    </h2>
+
+</section>
+{{ end }}
+<!-- /about -->
+
+<!-- Social Link -->
+<div class="pt-5 pb-10 px-4">
+    <section class="container mx-auto px-2">
+        <div class="flex justify-center icons" style="--column-gap: 2rem; --row-gap: 2rem">
+            {{ if .Site.Data.homepage.social.twitter }}
+            <a class="inline-block" href="https://twitter.com/{{ .Site.Data.homepage.social.twitter }}"> <img
+                    class="h-12 object-contain" src="https://cdn.svgporn.com/logos/twitter.svg" alt="Twitter"
+                    loading="lazy"></a></li>
+            {{ end }} {{ if .Site.Data.homepage.social.linkedin }}
+            <a class="inline-block" href="https://www.linkedin.com/in/{{ .Site.Data.homepage.social.linkedin }}">
+                <img class="h-12 object-contain" src="https://cdn.svgporn.com/logos/linkedin.svg" alt="LinkedIn"
+                    loading="lazy"> </a></li>
+            {{ end }} {{ if .Site.Data.homepage.social.github }}
+            <a class="inline-block" href="https://github.com/{{ .Site.Data.homepage.social.github }}"> <img
+                    class="h-12 object-contain" src="https://cdn.svgporn.com/logos/github-icon.svg" alt="GitHub"
+                    loading="lazy"> </a></li>
+            {{ end }} {{ if .Site.Data.homepage.social.gitlab }}
+            <a class="inline-block" href="https://gitlab.com/{{ .Site.Data.homepage.social.gitlab }}"> <img
+                    class="h-12 object-contain" src="https://cdn.svgporn.com/logos/gitlab.svg" alt="GitLab"
+                    loading="lazy"></a></li>
+            {{ end }} {{ if .Site.Data.homepage.social.facebook }}
+            <a class="inline-block" href="https://www.facebook.com/{{ .Site.Data.homepage.social.facebook }}"> <img
+                    class="h-12 object-contain" src="https://cdn.svgporn.com/logos/facebook.svg" alt="Facebook"
+                    loading="lazy"></a></li>
+            {{ end }} {{ if .Site.Data.homepage.social.instagram }}
+            <a class="inline-block" href="https://instagram.com/{{ .Site.Data.homepage.social.instagram }}"> <img
+                    class="h-12 object-contain" src="https://cdn.svgporn.com/logos/instagram-icon.svg" alt="Instagram"
+                    loading="lazy"></a></li>
+            {{ end }}{{ if .Site.Data.homepage.social.gmail }}
+            <a class="inline-block" href="mailto:{{ .Site.Data.homepage.social.gmail }}@gmail.com"> <img
+                    class="h-12 object-contain"
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail"
+                    loading="lazy"></a></li>
+            {{ end }}
+
+        </div>
+    </section>
+</div>
+<div class=" container mx-auto border-b-2 pb-5 border-grey-600">
+    <p class="text-center italic mx-auto">Find more with my
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-teal-400 to-blue-400">
+            <a href='/blog'>Blog</a>
+        </span> or
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-purple-400 to-red-400">
+            <a href='/portfolio'>Portfolio</a>
+        </span>
+    </p>
+</div>
+<!-- /social link -->
+
+<!-- Latest Updates -->
+{{ if .Site.Data.homepage.update.enable }}
+<section class="py-12">
+    <h2 class="text-center text-4xl font-semibold pb-2">Latest Update</h2>
+    
+    <div class="grid container mx-auto pt-2">
+        {{range first .Site.Data.homepage.update.nblog (where $.Site.RegularPages "Section" "blog").ByDate.Reverse }}
+        {{ if not .Params.draft }}
+        <div class="p-4" class="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg">
+            <div>
+                <a href="{{ .Permalink | relURL }}">
+                    <h2 class="font-semibold text-xl text-blue-700">
+                        {{ .Title }}
+                    </h2>
+                </a>
+                <time class="text-gray-600 text-sm uppercase"
+                    datetime="{{ .Date }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                <p>{{ .Params.description }}</p>
+            </div>
+        </div>
+        {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="py-10 flex flex-col" style="--column-gap: 2rem; --row-gap: 2rem">
+        {{range first .Site.Data.homepage.update.nportfolio (where $.Site.RegularPages "Section" "portfolio").ByDate.Reverse }}
+        {{ if not .Params.draft }}        
+        <div class="flex justify-center">
+            <div class="grid lg:grid-cols-2 container shadow gap-0 border border-gray-300 mx-4">
+                <img class="rounded border-r border-gray-300 object-cover" src="{{ .Params.image }}" alt="{{ .Params.description }}"
+                    loading="lazy" />
+                <hr class="lg:hidden" />
+                <div class="pt-4 px-4 relative">
+                    <h3 class="text-2xl font-medium">{{ .Title }}</h3>
+                    <h4 class=" text-gray-600 uppercase">
+                        {{ .Params.company }} &bull; {{ .Date.Format "Jan 2, 2006" }}
+                    </h4>
+                    <p class="pt-4">
+                        {{ .Params.description }}
+                    </p>
+                    <div class="flex flex-wrap divide-x-4 divide-transparent pt-2 pb-10">
+                        {{ range .Params.tech }}
+                        <img class="h-8 w-14" src="{{ .logo }}" alt="{{ .name }}" loading="lazy" />
+                        {{ end }}
+                    </div>
+                    <div class="flex absolute bottom-0 right-0 mt-2 pt-2">
+                        <a href="{{ .Permalink | relURL }}"
+                            class="px-4 py-2 border border-gray-300 text-sm w-40 text-center hover:bg-gray-200 rounded">Find out
+                            more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+{{ if .Site.Data.homepage.achievements.enable }}
+<section class="py-12 px-2">
+    <h2 class="text-center text-4xl font-semibold pb-4">Achievements</h2>
+    <div class="flex justify-center">
+        <div class="xl:w-1/3 flex flex-col divide-y-8 divide-transparent">
+            {{ range .Site.Data.homepage.achievements.item }}
+            <div class="grid grid-cols-12 mx-4">
+                <div class="col-span-3">
+                    <div
+                        class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center {{ .background }} border-none">
+                        <img class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center" src="{{ .image }}"
+                            alt="{{ .event }}" loading="lazy" />
+                    </div>
+                </div>
+                <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
+                    <div>
+                        <div class="font-medium text-xl">{{ .award }}</div>
+                        <div class="text-gray-700 text-sm">
+                            {{ .event }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4">
+                    {{ .date }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+
+<!-- Skills -->
+{{ if .Site.Data.homepage.skill.enable }}
+<section class="py-5 px-4">
+    <h2 class="text-left text-4xl"><span>Skills</span></h2>
+    <div class="flex flex-wrap justify-left pt-10 px-6 content-center" style="--column-gap: 4rem; --row-gap: 4rem">
+        {{ range .Site.Data.homepage.skill.item }}
+        <div class="text-gray-600 text-center text-sm">
+            <img class="w-16 h-16 sm:w-24 sm:h-24 object-contain self-center mb-2" src="{{.logo}}" alt="{{.company}}"
+                loading="lazy">
+            <p>{{.title}}</p>
+        </div>
+        {{ end }}
+        <a href="{{.Site.Data.homepage.skill.url}}" class="text-gray-600 text-center text-sm self-center object-center">
+            <img class="w-16 h-16 sm:w-24 sm:h-24 mb-2" src="{{ .Site.Data.homepage.skill.logo }}" alt="To Portfolio"
+                loading="lazy">
+            <p>{{ .Site.Data.homepage.skill.moreText }}</p>
+        </a>
+    </div>
+</section>
+{{ end }}
+<!-- /skills -->
+
+<!-- Experince -->
+{{ if .Site.Data.homepage.experience.enable }}
+<section class="py-5 px-4">
+    <h2 class="text-left text-4xl mb-5"><span>Experience</span></h2>
+    <div class='flex flex-wrap container mx-auto justify-center py-4 px-4' style="--row-gap: 2rem; --column-gap:2rem">
+        {{ range .Site.Data.homepage.experience.item }}
+        <div class="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg">
+            <img class="h-32 w-full object-contain p-4" src='{{.logo}}' alt="{{.title}}">
+            <hr class="my-4">
+            <div class="px-4 h-auto">
+                <h3 class="font-semibold ">{{.title}}</h3>
+                <h4 class="text-sm italic pb-1">{{.company}}</h4>
+
+                <div class="text-sm pb-4">
+                    <p class="text-gray-600">{{.duration}}</p>
+                    <p class="text-gray-900 leading-none">{{.description}}</p>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+<!-- ./experience -->
+
+
+<!-- Certifications -->
+{{ if .Site.Data.homepage.certifications.enable }}
+<section class="py-5 px-4">
+    <h2 class="text-left text-4xl font-semibold pb-4"><span>Certifications</span></h1>
+        <div class="pb-3 container mx-auto">
+            <p class="text-center italic mx-auto">Check my full certificates at
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-purple-400 to-red-400">
+                    <a href='/about'>About</a>
+                </span>
+            </p>
+        </div>
+        <div class="flex justify-center w-full">
+            <div class="xl:w-1/2 flex flex-col gap-10">
+                {{ range .Site.Data.homepage.certifications.item }}
+                <div class="grid grid-cols-12 mx-4 ">
+                    <div class="col-span-3 flex items-center">
+                        <a href="{{.url}}"
+                            class="rrounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center bg-teal-100 border-none">
+                            <img class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center" src="{{.image}}"
+                                alt="{{.title}}" loading="lazy" style="cursor: pointer">
+                        </a>
+                    </div>
+                    <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
+                        <div>
+                            <div class="font-medium text-black text-xl">{{.title}}</div>
+                            <div class="text-gray-700 text-sm">{{.org}}</div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4">
+                        {{.date}}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+</section>
+{{ end }}
+<!-- /Certifications -->
+
+<!-- education -->
+{{ if .Site.Data.homepage.education.enable }}
+<section class="py-5 px-4">
+    <h2 class="text-left text-4xl mb-5"><span>Education</span></h2>
+    <div class='flex flex-wrap container mx-auto justify-center py-4 px-4' style="--row-gap: 2rem; --column-gap:2rem">
+        {{ range .Site.Data.homepage.education.item }}
+        <div class="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg">
+            <img class="h-32 w-full object-contain p-4" src='{{.image}}' alt="{{.title}}">
+            <hr class="my-4">
+            <div class="px-4 h-auto">
+                <h3 class="font-semibold ">{{.title}}</h3>
+                <h4 class="text-sm italic pb-1">{{.academy}}</h4>
+
+                <div class="text-sm pb-4">
+                    <p class="text-gray-600">{{.year}}</p>
+                    <p class="text-gray-900 leading-none">{{.description}}</p>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+{{ end }}

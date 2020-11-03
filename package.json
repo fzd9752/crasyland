@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "build": "amazon-linux-extras install golang1.11 && hugo",
+    "dev": "hugo server"
+  },
+  "name": "crasyland",
+  "description": "[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) # Portfolio Website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.0.1",
+    "postcss-cli": "^8.2.0",
+    "tailwindcss": "^1.9.6"
+  }
+}
