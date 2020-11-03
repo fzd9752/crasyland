@@ -1,5 +1,4 @@
 name: github pages
-
 on:
   push:
     branches:
@@ -7,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -26,4 +25,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          EXTERNAL_REPOSITORY: fzd9752/fzd9752.github.io
+          PUBLISH_BRANCH: master
           publish_dir: ./public
+
